@@ -96,8 +96,7 @@ export default function CureraiteUI() {
     if (!question.trim()) return;
     setLoading(true);
     try {
-      `${API_BASE_URL}/api/personas`
-      const response = await fetch( `${baseURL}/api/personas`, {
+      const response = await fetch( `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/personas`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question, illness })
@@ -316,9 +315,7 @@ export default function CureraiteUI() {
                   {answers.tony}
                 </p>
 
-                {needsReadMore.tony && !expandedCards.tony && (
-                  <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-                )}
+                
               </div>
 
               {needsReadMore.tony && (
@@ -360,6 +357,41 @@ export default function CureraiteUI() {
         </motion.div>
       )}
 
+{!loading && debateLines.length === 0 && products.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center my-20"
+        >
+          <div className="flex justify-center items-center gap-6 mb-4">
+            <div title={randomItem(doctorQuotes)}>
+              <Image src="/avatars/doctor.jpg" alt="Dr. Gray" width={80}
+                height={80}
+                className="rounded-full cursor-help object-cover w-24 h-24" />
+            </div>
+            <div title={randomItem(naturopathQuotes)}>
+              <Image src="/avatars/naturopath.png" alt="Sage Willow" width={80}
+                height={80}
+                className="rounded-full cursor-help object-cover w-24 h-24" />
+            </div>
+            <div title={randomItem(tonyQuotes)}>
+              <Image src="/avatars/tonybot.png" alt="TonyBot" width={80}
+                height={80}
+                className="rounded-full cursor-help object-cover w-24 h-24" />
+            </div>
+          </div>
+          <h3 className="text-xl font-semibold text-gray-700">
+            <p>We&apos;re just standing here waiting to argue.</p>
+
+          </h3>
+          <p className="text-gray-500 mt-2">
+            Dr. Gray, Sage Willow, and TonyBot are ready to contradict each other — for your benefit.
+          </p>
+          <p className="text-sm text-gray-400 mt-1 italic">
+            Try: “What should I take when I fly if I have IBS?”
+          </p>
+        </motion.div>
+      )}
 
 
 
