@@ -131,7 +131,7 @@ export default function CureraiteUI() {
   const avatars = {
     doctor: "/avatars/doctor.jpg",
     naturopath: "/avatars/naturopath.png",
-    tony: "/avatars/tonybot.png",
+    tony: "/avatars/tonyBot.png",
     test: "/avatars/test.png" // <-- Add this (make sure the image exists)
   };
 
@@ -375,7 +375,7 @@ export default function CureraiteUI() {
                 className="rounded-full cursor-help object-cover w-24 h-24" />
             </div>
             <div title={randomItem(tonyQuotes)}>
-              <Image src="/avatars/tonybot.png" alt="TonyBot" width={80}
+              <Image src="/avatars/tonyBot.png" alt="TonyBot" width={80}
                 height={80}
                 className="rounded-full cursor-help object-cover w-24 h-24" />
             </div>
