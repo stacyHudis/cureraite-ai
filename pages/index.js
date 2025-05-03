@@ -10,7 +10,7 @@ export default function CureraiteUI() {
   const [loading, setLoading] = useState(false);
   const [quote, setQuote] = useState();
   const [answers, setAnswers] = useState({});
-  const API_BASE_URL = 'http://13.219.89.217:3001';
+  const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 
   const [expandedCards, setExpandedCards] = useState({
@@ -97,7 +97,7 @@ export default function CureraiteUI() {
     setLoading(true);
     try {
       `${API_BASE_URL}/api/personas`
-      const response = await fetch( `${API_BASE_URL}/api/personas`, {
+      const response = await fetch( `${baseURL}/api/personas`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question, illness })
